@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="large-6 large-centered columns">
+    <div class="row">
+      <div class="small-12 columns">
+	<%= form_for :user, :url => :users do |f| %>
+	  <%= f.label :login %> <br />
+	  <%= f.text_field :login, required: true %> <br />
+	  <%= f.label :prenom %> <br />
+	  <%= f.text_field :firstname, required: true %> <br />
+	  <%= f.label :nom %> <br />
+	  <%= f.text_field :lastname, required: true %> <br />
+	  <%= f.label :mail %> <br />
+	  <%= f.email_field :mail, required: true %> <br />
+	  <%= f.label :tel %> <br />
+	  <%= f.telephone_field :tel, required: true %> <br />
+	  <%= f.label :promo %> <br />
+	  <%= f.text_field :promo, required: true %> <br />
+	  <%= f.label :password %> <br />
+	  <%= f.password_field :password, required: true %> <br />
+	  <%= hidden_field_tag :invitation, value: params[:invitation] %> <br />
+	  <%= f.submit "Créer", class: "button success right" %>
+	<% end %>
+      </div>
+    </div>
+  </div>
+</div>
