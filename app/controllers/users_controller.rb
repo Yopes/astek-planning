@@ -7,9 +7,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    #p JSON.parse(params[:invitation].gsub(/:([a-zA-z]+)/,'"\\1"').gsub('=>', ': ')).symbolize_keys[:value]
-    @user = User.new(user_params)
-    if @user.save
+    invitation = JSON.parse(params[:invitation].gsub(/:([a-zA-z]+)/,'"\\1"').gsub('=>', ': '))
+    token = invitation.symbolize_keys[:value]
+    if Invitation.find_by_token(token) and User.new(user_params).save
+      Invitation.find_by_token(token).delete
       flash['success'] = 'Succès lors de la création du nouvel utilisateur'
       redirect_to root_path
     else
