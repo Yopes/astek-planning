@@ -4,13 +4,12 @@
       <div class="small-12 columns">
 	<br />
 	<%= form_for :user, :url => :signin do |f| %>
-	  <%= f.label :login %><br />
+	  <%= f.label :login %>
 	  <%= f.text_field :login %><br />
-	  <%= f.label :password %><br />
+	  <%= f.label :password %>
 	  <%= f.password_field :password %><br />
 	  <%= f.submit "Connexion", class: "button right" %>
 	<% end %>
-	<%= link_to "Sign Up", signup_path %>
       </div>
     </div>
   </div>

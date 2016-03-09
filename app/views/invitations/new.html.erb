@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="large-6 large-centered columns">
+    <div class="row">
+      <div class="small-12 columns">
+	<br />
+	<%= form_tag(controller: "invitations", action: "create") do %>
+	  <%= label_tag :mail %>
+	  <%= email_field_tag :mail, '', required: true %> <br />
+	  <%= submit_tag "Invite", class: "button expand" %>
+	<% end %>
+      </div>
+    </div>
+  </div>
+</div>

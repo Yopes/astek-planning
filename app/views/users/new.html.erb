@@ -1,27 +1,45 @@
 <div class="row">
-  <div class="large-6 large-centered columns">
+  <div class="large-10 large-centered columns">
     <div class="row">
-      <div class="small-12 columns">
-	<%= form_for :user, :url => :users do |f| %>
-	  <%= f.label :login %> <br />
-	  <%= f.text_field :login, required: true %> <br />
-	  <%= f.label :prenom %> <br />
+      <%= form_for :user, :url => :users do |f| %>
+	<div class="small-6 columns">
+	  <%= f.label :prenom %>
 	  <%= f.text_field :firstname, required: true %> <br />
-	  <%= f.label :nom %> <br />
+	</div>
+	<div class="small-6 columns">
+	  <%= f.label :nom %>
 	  <%= f.text_field :lastname, required: true %> <br />
-	  <%= f.label :mail %> <br />
+	</div>
+	<div class="small-6 columns">
+	  <%= f.label :mail %>
 	  <%= f.email_field :mail, required: true %> <br />
-	  <%= f.label :tel %> <br />
+	</div>
+	<div class="small-6 columns">
+	  <%= f.label :tel %>
 	  <%= f.telephone_field :tel, required: true %> <br />
-	  <%= f.label :promo %> <br />
+	</div>
+	<div class="small-6 columns">
+	  <%= f.label :login %>
+	  <%= f.text_field :login, required: true %> <br />
+	</div>
+	<div class="small-6 columns">
+	  <%= f.label :promo %>
 	  <%= f.text_field :promo, required: true %> <br />
-	  <%= f.label :password %> <br />
+	</div>
+	<div class="small-6 columns">
+	  <%= f.label :password %>
 	  <%= f.password_field :password, required: true %> <br />
-	  <%= hidden_field_tag :invitation, value: params[:invitation] %> <br />
-	  <%= f.submit "Créer", class: "button success right" %>
-	<% end %>
-	<%= link_to "Sign In", signin_path %>
-      </div>
+	</div>
+	<div class="small-6 columns">
+	  <%= label_tag :password_verification %>
+	  <%= password_field_tag :password_verification, required: true %> <br />
+	</div>
+	<%= hidden_field_tag :invitation, value: params[:invitation] %> <br />
+	<div class="small-6 columns right">
+	  <%= f.submit "Créer", class: "button right" %>
+	  <%= link_to "Sign In", signin_path %>
+	</div>
+      <% end %>
     </div>
   </div>
 </div>

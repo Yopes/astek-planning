@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   before_save :encrypt_password
-  # before_save :generateToken, if: :new_record?
+  before_save :generateToken, if: :new_record?
   after_initialize :default_values
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -40,13 +40,18 @@ class User < ActiveRecord::Base
     user = User.find_by_login(login)
     return nil if user.nil?
     return nil if user.password != user.encrypt(password)
-    # user.generateToken
     user.save
     return user
   end
 
-  # def generateToken
-  #   self.apiToken = self.encrypt("#{self.password}-#{self.id}-#{Time.now.nsec}").concat(Time.now.nsec.to_s)
-  # end
+  def self.auth_with_cookie(id, token)
+    return nil if id.nil? || token.nil?
+    user = User.find(id)
+    (user && user.token == token) ? user : nil
+  end
+
+  def generateToken
+    self.token = self.encrypt("#{self.password}-#{self.id}-#{Time.now.nsec}").concat(Time.now.nsec.to_s)
+  end
 
 end

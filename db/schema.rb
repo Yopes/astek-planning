@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309111714) do
+ActiveRecord::Schema.define(version: 20160309152300) do
 
   create_table "invitations", force: :cascade do |t|
     t.string   "token",      limit: 255
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160309111714) do
     t.datetime "updated_at",             null: false
     t.string   "password",   limit: 255
     t.boolean  "admin"
+    t.string   "token",      limit: 255
   end
 
   add_index "users", ["id"], name: "index_users_on_id", using: :btree
