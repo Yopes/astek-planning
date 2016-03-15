@@ -4,4 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include HomeHelper
 
+  def redirect_back
+    redirect_to (request.referer.present? ? :back : :root)
+  end
+
 end

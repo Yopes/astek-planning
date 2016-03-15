@@ -1,5 +1,42 @@
-<h3><%= @date %></h3>
+<div class='row collapse'>
+  <div class="small-6 columns nopadding">
+    <%= form_tag(planning_path, method: "get") do %>
+      <div class="small-6 columns">
+	<%= date_field_tag :date %>
+      </div>
+      <div class="small-2 columns left">
+	<%= submit_tag "GO !", class: "postfix button" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="small-6 columns nopadding">
+    <%= form_tag(jobs_path) do %>
+      <div class="small-5 columns">
+	<%= text_field_tag :login, nil, placeholder: "login" %>
+      </div>
+      <div class="small-5 columns">
+	<%= text_field_tag :todo, nil, placeholder: "to do" %>
+      </div>
+      <%= hidden_field_tag :date, value: @current_date %>
+      <div class="small-2 columns">
+	<%= submit_tag "Add user", class: "postfix button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-<% @users.each do |user| %>
-  <%= user.login %>
-<% end %>
+<div class='row'>
+  <div class="small-12 columns">
+    <div class="small-12 columns">
+      <%= link_to "Prev", "#{planning_path}?date=#{@prev_date}", class: "button large-2 columns" %>
+      <%= link_to "Next", "#{planning_path}?date=#{@next_date}", class: "button large-2 columns right" %>
+    </div>
+    <h3><%= @date %></h3>
+
+    <% @jobs.each do |job| %>
+      <%= job.user.login %>
+      <%= job.todo %>
+      <br/>
+    <% end %>
+  </div>
+</div>

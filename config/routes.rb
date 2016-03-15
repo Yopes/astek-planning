@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
 
   get 'planning' => 'jobs#index'
+
+  post 'jobs' => 'jobs#create'
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
