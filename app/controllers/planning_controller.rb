@@ -16,10 +16,15 @@ class PlanningController < ApplicationController
     date = JSON.parse(params[:date].gsub(/:([a-zA-z]+)/,'"\\1"').gsub('=>', ': '))
     date_value = date.symbolize_keys[:value]
     job = Job.new(date: date_value, todo: params[:todo])
-    if job.user = User.find_by_login(params[:login])
-      job.save
+    if !params[:todo].empty? and
+        Task.where(["todo = ? and date = ?", params[:todo], date_value]).first.nil?
+      flash[:alert] = "Activity does not exist"
     else
-      flash[:alert] = "Can't find user"
+      if job.user = User.find_by_login(params[:login])
+        job.save
+      else
+        flash[:alert] = "Can't find user"
+      end
     end
     redirect_back
   end
