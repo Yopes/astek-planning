@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   def default_values
     self.admin ||= false
     self.actif ||= true
+    self.total_days ||= 50
+    self.past_days ||= 0
   end
 
   #SignUp

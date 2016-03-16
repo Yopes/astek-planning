@@ -49,6 +49,7 @@
 
     <% @jobs.each do |job| %>
       <%= job.user.login %>
+      <%= job.user.past_days %>
       <%= job.todo %>
       <br/>
     <% end %>
@@ -56,6 +57,7 @@
     <% @tasks.each do |task| %>
       <%= task.todo %>
       <%= task.need %>
+      <%= task.people %>
       <br/>
     <% end %>
   </div>
