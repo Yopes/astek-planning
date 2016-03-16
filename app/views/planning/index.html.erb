@@ -46,7 +46,9 @@
       <%= link_to "Next", "#{planning_path}?date=#{@next_date}", class: "button large-2 columns right" %>
     </div>
     <h3><%= @date %></h3>
-
+    
+    <%= link_to "Assigned", "", class: "button large-6 columns" %>
+    <%= link_to "Activities", "", class: "button large-6 columns" %>
     <% @jobs.each do |job| %>
       <%= job.user.login %>
       <%= job.user.past_days %>
