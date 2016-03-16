@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <tr>
+      <th width="300">Activity</th>
+      <th width="200">Need</th>
+      <th width="200">Assigned</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @tasks.each do |task| %>
+	<td><%= task.todo %></td>
+	<td><%= task.need %></td>
+	<td><%= task.people %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>

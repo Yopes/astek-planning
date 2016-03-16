@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <th width="300">Login</th>
+      <th width="300">Activity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @jobs.each do |job| %>
+	<td><%= job.user.login %></td>
+	<td><%= (job.todo.empty? or job.todo.empty?) ? "Undefined activity" : job.todo %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
