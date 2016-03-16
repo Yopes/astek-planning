@@ -17,9 +17,10 @@ Rails.application.routes.draw do
   post 'invitations' => 'invitations#create'
 
 
-  get 'planning' => 'jobs#index'
+  get 'planning' => 'planning#index'
 
-  post 'jobs' => 'jobs#create'
+  post 'jobs' => 'planning#create_job'
+  post 'tasks' => 'planning#create_task'
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

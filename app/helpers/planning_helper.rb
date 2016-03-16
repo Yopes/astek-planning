@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-module JobsHelper
+module PlanningHelper
 
   def week_day
     ["Dimanche",

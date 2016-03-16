@@ -23,6 +23,20 @@
       </div>
     <% end %>
   </div>
+  <div class="small-6 columns nopadding">
+    <%= form_tag(tasks_path) do %>
+      <div class="small-5 columns">
+	<%= text_field_tag :todo, nil, placeholder: "to do" %>
+      </div>
+      <div class="small-5 columns">
+	<%= text_field_tag :need, nil, placeholder: "nb" %>
+      </div>
+      <%= hidden_field_tag :date, value: @current_date %>
+      <div class="small-2 columns">
+	<%= submit_tag "Add task", class: "postfix button" %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <div class='row'>
@@ -36,6 +50,12 @@
     <% @jobs.each do |job| %>
       <%= job.user.login %>
       <%= job.todo %>
+      <br/>
+    <% end %>
+
+    <% @tasks.each do |task| %>
+      <%= task.todo %>
+      <%= task.need %>
       <br/>
     <% end %>
   </div>

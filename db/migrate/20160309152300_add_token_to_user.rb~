@@ -1,4 +1,0 @@
-class AddTokenToUser < ActiveRecord::Migration
-  def change
-  end
-end
