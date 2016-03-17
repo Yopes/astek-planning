@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 class InvitationsController < ApplicationController
+  before_action :redirect_not_admin
 
   def new
   end

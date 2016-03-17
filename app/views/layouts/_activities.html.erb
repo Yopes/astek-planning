@@ -7,12 +7,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
       <% @tasks.each do |task| %>
-	<td><%= task.todo %></td>
-	<td><%= task.need %></td>
-	<td><%= task.people %></td>
+	<tr>
+	  <td><%= task.todo %></td>
+	  <td><%= task.need %></td>
+	  <td><%= task.people %></td>
+	</tr>
       <% end %>
-    </tr>
   </tbody>
 </table>

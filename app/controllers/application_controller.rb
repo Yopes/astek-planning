@@ -8,4 +8,12 @@ class ApplicationController < ActionController::Base
     redirect_to (request.referer.present? ? :back : :root)
   end
 
+  def redirect_not_connected
+    redirect_to :root if !signed_in?
+  end
+
+  def redirect_not_admin
+    redirect_to :root if !admin?
+  end
+
 end

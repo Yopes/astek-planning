@@ -12,6 +12,10 @@ module HomeHelper
     !current_user.nil?
   end
 
+  def admin?
+    !current_user.nil? and current_user.admin
+  end
+
   def current_user
     @current_user ||= user_from_remember_token
   end
