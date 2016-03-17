@@ -6,11 +6,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <% @jobs.each do |job| %>
+    <% @jobs.each do |job| %>
+      <tr>
 	<td><%= job.user.login %></td>
 	<td><%= (job.todo.empty? or job.todo.empty?) ? "Undefined activity" : job.todo %></td>
-      <% end %>
-    </tr>
+      </tr>
+    <% end %>
   </tbody>
 </table>

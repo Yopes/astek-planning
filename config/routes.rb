@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get 'planning' => 'planning#index'
 
+  get 'directory' => 'users#index'
+
   post 'jobs' => 'planning#create_job'
   post 'tasks' => 'planning#create_task'
   

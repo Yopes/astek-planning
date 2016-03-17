@@ -1,0 +1,31 @@
+<div class='row'>
+  <div class="small-12 columns">
+    <h3>Directory</h3>
+    <table>
+      <thead>
+	<tr>
+	  <th>Login</th>
+	  <th>Firstname</th>
+	  <th>Lastname</th>
+	  <th>Phone</th>
+	  <th>Mail</th>
+	  <th>Promo</th>
+	  <th>Actif</th>
+	</tr>
+      </thead>
+      <tbody>
+	<% @users.each do |user| %>
+	  <tr>
+	    <td><%= user.login %></td>
+	    <td><%= user.firstname %></td>
+	    <td><%= user.lastname %></td>
+	    <td><%= user.tel %></td>
+	    <td><%= user.mail %></td>
+	    <td><%= user.promo %></td>
+	    <td><%= user.actif ? "Yes" : "No" %></td>
+	  </tr>
+	<% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
