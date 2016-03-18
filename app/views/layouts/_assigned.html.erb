@@ -9,7 +9,7 @@
     <% @jobs.each do |job| %>
       <tr>
 	<td><%= job.user.login %></td>
-	<td><%= (job.todo.empty? or job.todo.empty?) ? "Undefined activity" : job.todo %></td>
+	<td><%= job.task.nil? ? "Undefined activity" : job.task.todo %></td>
       </tr>
     <% end %>
   </tbody>

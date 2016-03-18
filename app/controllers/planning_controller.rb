@@ -17,17 +17,17 @@ class PlanningController < ApplicationController
   def create_job
     date = JSON.parse(params[:date].gsub(/:([a-zA-z]+)/,'"\\1"').gsub('=>', ': '))
     date_value = date.symbolize_keys[:value]
-    job = Job.new(date: date_value, todo: params[:todo])
-    task = nil
+    job = Job.new(date: date_value)
+    job.task = nil
     if !params[:todo].empty? and
-        (task = Task.where(["todo = ? and date = ?", params[:todo], date_value]).first).nil?
+        (job.task = Task.where(["todo = ? and date = ?", params[:todo], date_value]).first).nil?
       flash[:alert] = "Activity does not exist"
     else
       if job.user = User.find_by_login(params[:login])
         job.save
-        if !task.nil?
-          task.people += 1
-          task.save
+        if !job.task.nil?
+          job.task.people += 1
+          job.task.save
         end
         job.user.past_days += 1
         job.user.save
