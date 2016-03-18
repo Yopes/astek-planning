@@ -4,6 +4,9 @@
       <th width="300">Activity</th>
       <th width="200">Need</th>
       <th width="200">Assigned</th>
+      <% if admin? %>
+	<th width="100">Delete</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -12,6 +15,9 @@
 	  <td><%= task.todo %></td>
 	  <td><%= task.need %></td>
 	  <td><%= task.people %></td>
+	  <% if admin? %>
+	    <td><%= link_to "Delete", "#{tasks_path}/#{task.id}/delete" %></td>
+	  <% end %>
 	</tr>
       <% end %>
   </tbody>

@@ -3,6 +3,9 @@
     <tr>
       <th width="300">Login</th>
       <th width="300">Activity</th>
+      <% if admin? %>
+	<th width="100">Delete</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -10,6 +13,9 @@
       <tr>
 	<td><%= job.user.login %></td>
 	<td><%= job.task.nil? ? "Undefined activity" : job.task.todo %></td>
+	<% if admin? %>
+	  <td><%= link_to "Delete", "#{jobs_path}/#{job.id}/delete" %></td>
+	<% end %>
       </tr>
     <% end %>
   </tbody>

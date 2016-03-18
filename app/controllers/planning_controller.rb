@@ -38,11 +38,28 @@ class PlanningController < ApplicationController
     redirect_back
   end
 
+  def delete_job 
+    job = Job.find(params[:id])
+    remove_job job if !job.nil?
+    redirect_back
+  end
+
   def create_task
     date = JSON.parse(params[:date].gsub(/:([a-zA-z]+)/,'"\\1"').gsub('=>', ': '))
     date_value = date.symbolize_keys[:value]
     task = Task.new(date: date_value, todo: params[:todo], need: params[:need])
     task.save
+    redirect_back
+  end
+
+  def delete_task
+    task = Task.find(params[:id])
+    if !task.nil?
+      task.jobs.each do |job|
+        remove_job job
+      end
+      task.destroy
+    end
     redirect_back
   end
 

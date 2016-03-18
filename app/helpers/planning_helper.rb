@@ -56,4 +56,14 @@ module PlanningHelper
     return time
   end
 
+  def remove_job(job)
+    job.user.past_days -= 1
+    job.user.save
+    if !job.task.nil?
+      job.task.people -= 1
+      job.task.save
+    end
+    job.destroy
+  end
+
 end
