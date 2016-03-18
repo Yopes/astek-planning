@@ -1,0 +1,26 @@
+$warning-button-bg-hover: scale-color($warning-color, $lightness: $button-function-factor) !default;
+$warning-button-border-color: $warning-button-bg-hover !default;
+button, .button {
+  &.warning   { @include button-style($bg:$warning-color, $bg-hover:$warning-button-bg-hover, $border-color:$warning-button-border-color); }
+  &.disabled, &[disabled] { @include button-style($bg:$button-bg-color, $disabled:true, $bg-hover:$button-bg-hover, $border-color:$button-border-color);
+    &.warning { @include button-style($bg:$warning-color, $disabled:true, $bg-hover:$warning-button-bg-hover, $border-color:$warning-button-border-color); }
+  }
+}
+
+$midnight-button-bg-hover: scale-color($midnight-color, $lightness: $button-function-factor) !default;
+$midnight-button-border-color: $midnight-button-bg-hover !default;
+button, .button {
+  &.midnight   { @include button-style($bg:$midnight-color, $bg-hover:$midnight-button-bg-hover, $border-color:$midnight-button-border-color); }
+  &.disabled, &[disabled] { @include button-style($bg:$button-bg-color, $disabled:true, $bg-hover:$button-bg-hover, $border-color:$button-border-color);
+    &.midnight { @include button-style($bg:$midnight-color, $disabled:true, $bg-hover:$midnight-button-bg-hover, $border-color:$midnight-button-border-color); }
+  }
+}
+
+$inactive-button-bg-hover: scale-color($inactive-color, $lightness: $button-function-factor) !default;
+$inactive-button-border-color: $inactive-button-bg-hover !default;
+button, .button {
+  &.inactive   { @include button-style($bg:$inactive-color, $bg-hover:$inactive-button-bg-hover, $border-color:$inactive-button-border-color); }
+  &.disabled, &[disabled] { @include button-style($bg:$button-bg-color, $disabled:true, $bg-hover:$button-bg-hover, $border-color:$button-border-color);
+    &.inactive { @include button-style($bg:$inactive-color, $disabled:true, $bg-hover:$inactive-button-bg-hover, $border-color:$inactive-button-border-color); }
+  }
+}
