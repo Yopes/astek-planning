@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'directory' => 'users#index'
 
   post 'jobs' => 'planning#create_job'
+  post 'jobs/:id' => 'planning#update_job'
   get 'jobs/:id/delete' => 'planning#delete_job'
   post 'tasks' => 'planning#create_task'
   get 'tasks/:id/delete' => 'planning#delete_task'

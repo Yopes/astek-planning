@@ -32,6 +32,22 @@ class PlanningController < ApplicationController
     redirect_back
   end
 
+  def update_job 
+    date = JSON.parse(params[:date].gsub(/:([a-zA-z]+)/,'"\\1"').gsub('=>', ': '))
+    date_value = date.symbolize_keys[:value]
+    job = Job.find(params[:id])
+    if !job.nil?
+    job.task = nil
+      if !params[:todo].empty? and
+          (job.task = Task.where(["todo = ? and date = ?", params[:todo], date_value]).first).nil?
+        flash[:alert] = "Activity does not exist"
+      else
+        job.save
+      end
+    end
+    redirect_back
+  end
+
   def delete_job 
     job = Job.find(params[:id])
     job.destroy if !job.nil?
