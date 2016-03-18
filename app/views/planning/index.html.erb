@@ -51,9 +51,9 @@
     <h3><%= @date %></h3>
     
     <%= link_to "Assigned", "#{planning_path}?date=#{@current_date}",
-    class: "button large-6 columns midnight" %>
+    class: "button large-6 columns #{params[:view] == 'activities' ? '' : 'midnight'}" %>
     <%= link_to "Activities", "#{planning_path}?date=#{@current_date}&view=activities",
-    class: "button large-6 columns" %>
+    class: "button large-6 columns #{params[:view] == 'activities' ? 'midnight' : ''}" %>
 
     <% if params[:view] == "activities" %>
       <%= render 'layouts/activities' %>
