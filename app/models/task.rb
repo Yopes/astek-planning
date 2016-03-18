@@ -1,4 +1,5 @@
 class Task < ActiveRecord::Base
+  has_many :jobs
   after_initialize :default_values
 
   validates :todo, presence: true, allow_blank: false

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316145307) do
+ActiveRecord::Schema.define(version: 20160318185541) do
 
   create_table "invitations", force: :cascade do |t|
     t.string   "token",      limit: 255
@@ -25,8 +25,10 @@ ActiveRecord::Schema.define(version: 20160316145307) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "user_id",    limit: 4
+    t.integer  "task_id",    limit: 4
   end
 
+  add_index "jobs", ["task_id"], name: "index_jobs_on_task_id", using: :btree
   add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree
 
   create_table "tasks", force: :cascade do |t|
