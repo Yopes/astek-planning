@@ -28,6 +28,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'foundation-rails', '~> 5.5'
 
+gem 'jquery-turbolinks'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
