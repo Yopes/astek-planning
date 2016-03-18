@@ -14,7 +14,7 @@
 	<tr>
 	  <td><%= task.todo %></td>
 	  <td><%= task.need %></td>
-	  <td><%= task.people %></td>
+	  <td><%= task.count_assigned %></td>
 	  <% if admin? %>
 	    <td><%= link_to "Delete", "#{tasks_path}/#{task.id}/delete" %></td>
 	  <% end %>

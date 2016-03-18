@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :jobs
+
   before_save :encrypt_password
   before_save :generateToken, if: :new_record?
   after_initialize :default_values
@@ -17,7 +19,10 @@ class User < ActiveRecord::Base
     self.admin ||= false
     self.actif ||= true
     self.total_days ||= 50
-    self.past_days ||= 0
+  end
+
+  def count_past_days
+    self.jobs.count
   end
 
   #SignUp

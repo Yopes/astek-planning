@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318185541) do
+ActiveRecord::Schema.define(version: 20160318201325) do
 
   create_table "invitations", force: :cascade do |t|
     t.string   "token",      limit: 255
@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 20160318185541) do
     t.string   "date",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.integer  "people",     limit: 4
     t.integer  "need",       limit: 4
   end
 
@@ -55,7 +54,6 @@ ActiveRecord::Schema.define(version: 20160318185541) do
     t.boolean  "admin"
     t.string   "token",      limit: 255
     t.integer  "total_days", limit: 4
-    t.integer  "past_days",  limit: 4
   end
 
   add_index "users", ["id"], name: "index_users_on_id", using: :btree

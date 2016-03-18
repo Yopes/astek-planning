@@ -7,7 +7,10 @@ class Task < ActiveRecord::Base
 
   def default_values
     self.need ||= 0
-    self.people ||= 0
+  end
+
+  def count_assigned
+    self.jobs.count
   end
 
 end

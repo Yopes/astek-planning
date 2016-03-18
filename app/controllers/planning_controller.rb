@@ -25,12 +25,6 @@ class PlanningController < ApplicationController
     else
       if job.user = User.find_by_login(params[:login])
         job.save
-        if !job.task.nil?
-          job.task.people += 1
-          job.task.save
-        end
-        job.user.past_days += 1
-        job.user.save
       else
         flash[:alert] = "Can't find user"
       end
@@ -40,7 +34,7 @@ class PlanningController < ApplicationController
 
   def delete_job 
     job = Job.find(params[:id])
-    remove_job job if !job.nil?
+    job.destroy if !job.nil?
     redirect_back
   end
 
@@ -56,7 +50,7 @@ class PlanningController < ApplicationController
     task = Task.find(params[:id])
     if !task.nil?
       task.jobs.each do |job|
-        remove_job job
+        job.destroy
       end
       task.destroy
     end
