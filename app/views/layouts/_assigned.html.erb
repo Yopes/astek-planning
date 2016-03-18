@@ -14,18 +14,18 @@
       <tr>
 	<td><%= job.user.login %></td>
 	<% if admin? %>
-	    <td>
-	      <%= form_tag "#{jobs_path}/#{job.id}", id: "activityform#{job.id}" do %>
-		<%= hidden_field_tag :date, value: @current_date %>
-		<%= text_field_tag :todo,
-		job.task.nil? ? "Undefined activity" : job.task.todo %>
-	      <% end %>
-	    </td>
-	    <td><%= link_to "Delete", "#{jobs_path}/#{job.id}/delete", class: "postfix button alert" %></td>
-	    <td><%= button_tag "Update", onclick: "document.getElementById('activityform#{job.id}').submit()",
-		class: "postfix button" %></td>
+	  <td>
+	    <%= form_tag "#{jobs_path}/#{job.id}", id: "jobform#{job.id}" do %>
+	      <%= hidden_field_tag :date, value: @current_date %>
+	      <%= text_field_tag :todo,
+	      job.task.nil? ? "Undefined activity" : job.task.todo %>
+	    <% end %>
+	  </td>
+	  <td><%= link_to "Delete", "#{jobs_path}/#{job.id}/delete", class: "postfix button alert" %></td>
+	  <td><%= button_tag "Update", onclick: "document.getElementById('jobform#{job.id}').submit()",
+	      class: "postfix button" %></td>
 	<% else %>
-	    <td><%= job.task.nil? ? "Undefined activity" : job.task.todo %></td>
+	  <td><%= job.task.nil? ? "Undefined activity" : job.task.todo %></td>
 	<% end %>
       </tr>
     <% end %>

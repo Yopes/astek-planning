@@ -6,19 +6,29 @@
       <th width="200">Assigned</th>
       <% if admin? %>
 	<th width="100">Delete</th>
+	<th width="100">Update</th>
       <% end %>
     </tr>
   </thead>
   <tbody>
-      <% @tasks.each do |task| %>
-	<tr>
-	  <td><%= task.todo %></td>
+    <% @tasks.each do |task| %>
+      <tr>
+	<td><%= task.todo %></td>
+	<% if admin? %>
+	  <td>
+	    <%= form_tag "#{tasks_path}/#{task.id}", id: "taskform#{task.id}" do %>
+	      <%= text_field_tag :need, task.need %>
+	    <% end %>
+	  </td>
+	  <td><%= task.count_assigned %></td>
+	  <td><%= link_to "Delete", "#{tasks_path}/#{task.id}/delete", class: "postfix button alert" %></td>
+	  <td><%= button_tag "Update", onclick: "document.getElementById('taskform#{task.id}').submit()",
+	      class: "postfix button" %></td>
+	<% else %>
 	  <td><%= task.need %></td>
 	  <td><%= task.count_assigned %></td>
-	  <% if admin? %>
-	    <td><%= link_to "Delete", "#{tasks_path}/#{task.id}/delete" %></td>
-	  <% end %>
-	</tr>
-      <% end %>
+	<% end %>
+      </tr>
+    <% end %>
   </tbody>
 </table>

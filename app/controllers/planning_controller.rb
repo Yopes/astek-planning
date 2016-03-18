@@ -62,6 +62,15 @@ class PlanningController < ApplicationController
     redirect_back
   end
 
+  def update_task
+    task = Task.find(params[:id])
+    if !task.nil?
+      task.need = params[:need]
+      task.save
+    end
+    redirect_back
+  end
+
   def delete_task
     task = Task.find(params[:id])
     if !task.nil?
