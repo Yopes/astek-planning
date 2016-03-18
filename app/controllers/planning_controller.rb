@@ -1,6 +1,6 @@
 class PlanningController < ApplicationController
   before_action :redirect_not_connected
-  before_action :redirect_not_admin, only: [:create_job, :create_task]
+  before_action :redirect_not_admin, only: [:create_job, :update_job, :delete_job, :create_task, :update_task, :delete_task]
 
   include PlanningHelper
 
