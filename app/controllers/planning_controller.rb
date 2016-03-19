@@ -14,6 +14,17 @@ class PlanningController < ApplicationController
     @tasks = Task.where("date = '#{serialize_date(time)}'").all
   end
 
+  def week
+    day = get_first_day_of_week
+    @prev_date = serialize_date(day - 86400)
+    @days = []
+    7.times.each do
+      @days << display_date(day)
+      day += 86400
+    end
+    @next_date = serialize_date(day)
+  end
+
   def create_job
     date = JSON.parse(params[:date].gsub(/:([a-zA-z]+)/,'"\\1"').gsub('=>', ': '))
     date_value = date.symbolize_keys[:value]

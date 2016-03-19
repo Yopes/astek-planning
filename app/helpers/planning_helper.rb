@@ -56,4 +56,12 @@ module PlanningHelper
     return time
   end
 
+  def get_first_day_of_week
+    time = get_time
+    while time.wday != 1
+      time -= 86400
+    end
+    return time
+  end
+
 end

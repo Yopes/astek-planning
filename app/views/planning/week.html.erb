@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="small-10 columns push-1">
+    <%= link_to "Prev week", "#{planning_path}/week?date=#{@prev_date}", class: "button large-3 columns" %>
+    <%= link_to "Next week", "#{planning_path}/week?date=#{@next_date}", class: "button large-3 columns right" %>
+  </div>
+    
+  <div class="large-10 large-centered columns">
+    <% @days.each do |day| %>
+      <%= link_to day, "#", class: "button large-12 columns" %>
+    <% end %>
+  </div>
+</div>
