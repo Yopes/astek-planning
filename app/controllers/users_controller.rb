@@ -2,6 +2,8 @@
 require 'json'
 
 class UsersController < ApplicationController
+  before_action :redirect_not_connected, except: [:new, :create]
+  before_action :redirect_not_admin, only: [:delete]
 
   def index
     @users = User.all
@@ -44,6 +46,17 @@ class UsersController < ApplicationController
       end
     end
     flash[:alert] = "Can't update user"
+    redirect_back
+  end
+
+  def delete
+    user = User.find(params[:id])
+    if !user.nil?
+      user.jobs.each do |job|
+        job.destroy
+      end
+      user.destroy
+    end
     redirect_back
   end
 

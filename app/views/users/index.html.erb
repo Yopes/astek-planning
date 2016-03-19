@@ -13,6 +13,7 @@
 	  <th>Actif</th>
 	  <% if admin? %>
 	    <th width="100">Edit</th>
+	    <th width="100">Delete</th>
 	  <% end %>
 	</tr>
       </thead>
@@ -29,6 +30,8 @@
 	    <% if admin? %>
 	      <td><%= link_to "Edit", "#{users_path}/#{user.id}/edit",
 		  class: "postfix button alert nomargin" %></td>
+	      <td><%= link_to "Delete", user == current_user ? "#" : "#{users_path}/#{user.id}/delete",
+		  class: "postfix button nomargin #{user == current_user ? 'inactive' : 'alert'}" %></td>
 	    <% end %>
 	  </tr>
 	<% end %>
