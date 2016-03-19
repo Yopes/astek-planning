@@ -1,7 +1,8 @@
 <div class="row">
   <div class="large-10 large-centered columns">
+  <h3>Edit user</h3>
     <div class="row">
-      <%= form_for :user, :url => :users do |f| %>
+      <%= form_for @user, url: "#{users_path}/#{@user.id}/update" do |f| %>
 	<div class="small-6 columns">
 	  <%= f.label :prenom %>
 	  <%= f.text_field :firstname, required: true %> <br />
@@ -28,16 +29,25 @@
 	</div>
 	<div class="small-6 columns">
 	  <%= f.label :password %>
-	  <%= f.password_field :password, required: true %> <br />
+	  <%= f.password_field :password %> <br />
 	</div>
 	<div class="small-6 columns">
 	  <%= label_tag :password_verification %>
-	  <%= password_field_tag :password_verification, required: true %> <br />
+	  <%= password_field_tag :password_verification %> <br />
 	</div>
+	<% if admin? %> 
+	  <div class="small-6 columns">
+	    <%= f.check_box :actif %>
+	    <%= f.label :actif %>
+	    <% if current_user != @user %>
+	      <%= f.check_box :admin %>
+	      <%= f.label :admin %>
+	    <% end %>
+	  </div>
+	<% end %>
 	<%= hidden_field_tag :invitation, value: params[:invitation] %> <br />
 	<div class="small-6 columns right">
-	  <%= f.submit "Create", class: "button right" %>
-	  <%= link_to "Sign In", signin_path %>
+	  <%= f.submit "Update", class: "button right" %>
 	</div>
       <% end %>
     </div>

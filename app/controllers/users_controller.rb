@@ -26,10 +26,39 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+    check_user_access @user
+  end
+
+  def update
+    user = User.find(params[:id])
+    check_user_access user
+    if !user.nil? &&
+        (params[:password].nil? || params[:password].empty? ||
+         params[:password] == params[:password_verification])
+      if user.update(user_params)
+        flash[:success] = "User successfuly updated"
+        redirect_back
+        return
+      end
+    end
+    flash[:alert] = "Can't update user"
+    redirect_back
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:login, :firstname, :lastname, :mail, :tel, :promo, :password)
+    if !admin?
+      params[:user][:admin] = nil
+      params[:user][:actif] = nil
+    end
+    params.require(:user).permit(:login, :firstname, :lastname, :mail, :tel, :promo, :password, :admin, :actif)
+  end
+
+  def check_user_access(user)
+    redirect_not_admin if user != current_user
   end
 
 end

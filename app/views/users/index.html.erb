@@ -27,7 +27,8 @@
 	    <td><%= user.promo %></td>
 	    <td><%= user.actif ? "Yes" : "No" %></td>
 	    <% if admin? %>
-	      <td><%= link_to "Edit", root_path, class: "postfix button alert nomargin" %></td>
+	      <td><%= link_to "Edit", "#{users_path}/#{user.id}/edit",
+		  class: "postfix button alert nomargin" %></td>
 	    <% end %>
 	  </tr>
 	<% end %>

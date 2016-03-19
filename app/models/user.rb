@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   before_save :encrypt_password
   before_save :generateToken, if: :new_record?
-  after_initialize :default_values
+  before_save :default_values, if: :new_record?
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

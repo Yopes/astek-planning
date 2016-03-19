@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
   post 'users' => 'users#create'
 
+  get 'users/:id/edit' => 'users#edit'
+  patch 'users/:id/update' => 'users#update'
+
   get 'logout' => 'home#destroy'
 
   get 'invitations' => 'invitations#new'
