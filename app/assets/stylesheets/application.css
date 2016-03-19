@@ -20,3 +20,15 @@
 .nopadding div {
     padding: 0;
 }
+
+.nomargin.button {
+    margin: 0;
+}
+
+input#todo {
+    margin: 0;
+}
+
+input#need {
+    margin: 0;
+}

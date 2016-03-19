@@ -21,9 +21,9 @@
 	    <% end %>
 	  </td>
 	  <td><%= task.count_assigned %></td>
-	  <td><%= link_to "Delete", "#{tasks_path}/#{task.id}/delete", class: "postfix button alert" %></td>
+	  <td><%= link_to "Delete", "#{tasks_path}/#{task.id}/delete", class: "postfix button alert nomargin" %></td>
 	  <td><%= button_tag "Update", onclick: "document.getElementById('taskform#{task.id}').submit()",
-	      class: "postfix button" %></td>
+	      class: "postfix button nomargin" %></td>
 	<% else %>
 	  <td><%= task.need %></td>
 	  <td><%= task.count_assigned %></td>

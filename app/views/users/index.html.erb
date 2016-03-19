@@ -11,6 +11,9 @@
 	  <th>Mail</th>
 	  <th>Promo</th>
 	  <th>Actif</th>
+	  <% if admin? %>
+	    <th width="100">Edit</th>
+	  <% end %>
 	</tr>
       </thead>
       <tbody>
@@ -23,6 +26,9 @@
 	    <td><%= user.mail %></td>
 	    <td><%= user.promo %></td>
 	    <td><%= user.actif ? "Yes" : "No" %></td>
+	    <% if admin? %>
+	      <td><%= link_to "Edit", root_path, class: "postfix button alert nomargin" %></td>
+	    <% end %>
 	  </tr>
 	<% end %>
       </tbody>

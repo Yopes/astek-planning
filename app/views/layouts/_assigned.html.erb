@@ -12,7 +12,7 @@
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
-	<td><%= job.user.login %></td>
+	<td valign="middle"><%= job.user.login %></td>
 	<% if admin? %>
 	  <td>
 	    <%= form_tag "#{jobs_path}/#{job.id}", id: "jobform#{job.id}" do %>
@@ -21,9 +21,9 @@
 	      job.task.nil? ? "Undefined activity" : job.task.todo %>
 	    <% end %>
 	  </td>
-	  <td><%= link_to "Delete", "#{jobs_path}/#{job.id}/delete", class: "postfix button alert" %></td>
+	  <td><%= link_to "Delete", "#{jobs_path}/#{job.id}/delete", class: "postfix button alert nomargin" %></td>
 	  <td><%= button_tag "Update", onclick: "document.getElementById('jobform#{job.id}').submit()",
-	      class: "postfix button" %></td>
+	      class: "postfix button nomargin" %></td>
 	<% else %>
 	  <td><%= job.task.nil? ? "Undefined activity" : job.task.todo %></td>
 	<% end %>
