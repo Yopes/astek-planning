@@ -37,14 +37,14 @@ module PlanningHelper
     "#{week_day[time.wday]} #{time.day} #{months[time.month]} #{time.year}"
   end
 
-  def get_time
-    if params.has_key?(:date)
+  def get_time(date = params[:date])
+    if !date.nil?
       begin
-        if params[:date].include?("/")
-          tab = params[:date].split('/')
+        if date.include?("/")
+          tab = date.split('/')
           time = "#{tab[2]}-#{tab[1]}-#{tab[0]} 00:00:00".to_time
         else
-          tab = params[:date].split('-')
+          tab = date.split('-')
           time = "#{tab[0]}-#{tab[1]}-#{tab[2]} 00:00:00".to_time
         end
       rescue

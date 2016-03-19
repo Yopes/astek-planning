@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="large-10 large-centered columns">
+    <ul class="pricing-table">
+      <li class="title">Informations</li>
+      <% if @serialized_date.nil? %> 
+	<li class="bullet-item">Next working day : <%= @next_working_day %></li>
+      <% else %>
+	<li class="bullet-item">Next working day : <%= link_to @next_working_day,
+						   "#{planning_path}?date=#{@serialized_date}" %></li>
+      <% end %>
+      <li class="bullet-item">
+	Still <%= current_user.total_days - current_user.count_past_days %> days to work
+      </li>
+      <li class="bullet-item">
+	<%= current_user.count_past_days %> / <%= current_user.total_days %> days worked
+      </li>
+    </ul>
+  </div>
+</div>
