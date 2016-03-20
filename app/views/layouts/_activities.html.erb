@@ -8,6 +8,7 @@
 	<th width="100">Delete</th>
 	<th width="100">Update</th>
       <% end %>
+      <th width="100">Full</th>
     </tr>
   </thead>
   <tbody>
@@ -28,6 +29,7 @@
 	  <td><%= task.need %></td>
 	  <td><%= task.count_assigned %></td>
 	<% end %>
+	<th><%= task.need > task.count_assigned ? "No" : "Yes" %></th>
       </tr>
     <% end %>
   </tbody>

@@ -70,6 +70,14 @@ module PlanningHelper
     return time
   end
 
+  def is_full_day?(day)
+    tasks = Task.where("date = '#{serialize_date(day)}'").all
+    tasks.each do |task|
+      return false if task.need > task.count_assigned
+    end
+    return true
+  end
+
   def get_week_infos(day)
     days = []
     7.times.each do
@@ -78,6 +86,7 @@ module PlanningHelper
       tmp[:serialized_date] = serialize_date(day)
       tmp[:day] = day.day
       tmp[:month] = day.month
+      tmp[:full] = is_full_day?(day)
       tmp[:work] = current_user.jobs.where("date = '#{serialize_date(day)}'").all.count > 0 ? true : false
       days << tmp
       day += 86400

@@ -74,6 +74,10 @@
     display: none;
 }
 
+.day.warning, .days.warning {
+    background: $warning-color;
+}
+
 .day.work, .days.work {
     background: $midnight-color;
 }

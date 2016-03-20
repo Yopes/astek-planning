@@ -43,7 +43,7 @@
 	<li class="week">
 	  <% week.each do |day| %>
 	      <%= link_to day[:day], "#{planning_path}?date=#{day[:serialized_date]}",
-	      class: "small-1 medium-1 large-1 day #{day[:month] != @month ? 'previous-month' : ''} #{day[:work] ? 'work' : ''}" %>
+	      class: "small-1 medium-1 large-1 day #{day[:month] != @month ? 'previous-month' : ''} #{day[:work] ? 'work' : ''} #{day[:full] ? '' : 'warning'}" %>
 	  <% end %>
 	</li>
       <% end %>
