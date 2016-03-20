@@ -9,6 +9,8 @@
   <section class="top-bar-section">
     <ul class="right">
       <li><%= link_to "Today", planning_path %></li>
+      <li><%= link_to "Week",  "#{planning_path}/week" %></li>
+      <li><%= link_to "Month", "#{planning_path}/month" %></li>
       <li><%= link_to "Directory", directory_path %></li>
       <li><%= link_to "Edit profile", "#{users_path}/#{current_user.id}/edit" %></li>
       <li class="active"><%= link_to "Logout", logout_path %></li>
@@ -30,6 +32,8 @@
       <li class="has-dropdown">
         <a href="#">Menu</a>
         <ul class="dropdown">
+	  <li><%= link_to "Week",  "#{planning_path}/week" %></li>
+	  <li><%= link_to "Month", "#{planning_path}/month" %></li>
           <li><%= link_to "Edit profile", "#{users_path}/#{current_user.id}/edit" %></li>
           <li class="active"><%= link_to "Logout", logout_path %></li>
         </ul>

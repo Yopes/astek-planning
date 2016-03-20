@@ -56,12 +56,33 @@ module PlanningHelper
     return time
   end
 
-  def get_first_day_of_week
-    time = get_time
+  def get_first_day_of_week(time = get_time)
     while time.wday != 1
       time -= 86400
     end
     return time
+  end
+
+  def get_first_day_of_month(time = get_time)
+    while time.day > 1
+      time -= 86400
+    end
+    return time
+  end
+
+  def get_week_infos(day)
+    days = []
+    7.times.each do
+      tmp = {}
+      tmp[:display_date] = display_date(day)
+      tmp[:serialized_date] = serialize_date(day)
+      tmp[:day] = day.day
+      tmp[:month] = day.month
+      tmp[:work] = current_user.jobs.where("date = '#{serialize_date(day)}'").all.count > 0 ? true : false
+      days << tmp
+      day += 86400
+    end
+    return days
   end
 
 end

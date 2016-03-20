@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="small-12 columns">
+    <%= link_to "Prev month", "#{planning_path}/month?date=#{@prev_date}", class: "button large-3 small-6 columns" %>
+    <%= link_to "Next month", "#{planning_path}/month?date=#{@next_date}", class: "button large-3 small-6 columns" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 large-centered columns">
+    <ul class="calendar">
+      <li class="title"><%= months[@month] %></li>
+      <li class="day-header">
+	<div class="small-1 medium-1 large-1 day">
+	  <span class="show-for-medium-up">Monday</span>
+	  <span class="show-for-small">Mon</span>
+	</div>
+	<div class="small-1 medium-1 large-1 day">
+	  <span class="show-for-medium-up">Tuesday</span>
+	  <span class="show-for-small">Tue</span>
+	</div>
+	<div class="small-1 medium-1 large-1 day">
+	  <span class="show-for-large-up">Wednesday</span>
+	  <span class="show-for-medium-down">Wed</span>
+	</div>
+	<div class="small-1 medium-1 large-1 day">
+	  <span class="show-for-medium-up">Thursday</span>
+	  <span class="show-for-small">Thu</span>
+	</div>
+	<div class="small-1 medium-1 large-1 day">
+	  <span class="show-for-medium-up">Friday</span>
+	  <span class="show-for-small">Fri</span>
+	</div>
+	<div class="small-1 medium-1 large-1 day">
+	  <span class="show-for-medium-up">Saturday</span>
+	  <span class="show-for-small">Sat</span>
+	</div>
+	<div class="small-1 medium-1 large-1 day">
+	  <span class="show-for-medium-up">Sunday</span>
+	  <span class="show-for-small">Sun</span>
+	</div>
+      </li>
+      <% @weeks.each do |week| %>
+	<li class="week">
+	  <% week.each do |day| %>
+	      <%= link_to day[:day], "#{planning_path}?date=#{day[:serialized_date]}",
+	      class: "small-1 medium-1 large-1 day #{day[:month] != @month ? 'previous-month' : ''} #{day[:work] ? 'work' : ''}" %>
+	  <% end %>
+	</li>
+      <% end %>
+    </ul>
+  </div>
+</div>

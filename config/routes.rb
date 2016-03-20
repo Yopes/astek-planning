@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   get 'planning' => 'planning#index'
   get 'planning/week' => 'planning#week'
+  get 'planning/month' => 'planning#month'
 
   get 'directory' => 'users#index'
 

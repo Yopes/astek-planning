@@ -17,11 +17,20 @@ class PlanningController < ApplicationController
   def week
     day = get_first_day_of_week
     @prev_date = serialize_date(day - 86400)
-    @days = []
-    7.times.each do
-      @days << display_date(day)
-      day += 86400
-    end
+    @next_date = serialize_date(day + 7 * 86400)
+    @days = get_week_infos(day)
+  end
+
+  def month
+    day = get_first_day_of_month
+    @prev_date = serialize_date(day - 86400)
+    @month = day.month
+    @weeks = []
+    day = get_first_day_of_week(day)
+    begin
+      @weeks << get_week_infos(day)
+      day += 7 * 86400
+    end while day.month == @month 
     @next_date = serialize_date(day)
   end
 

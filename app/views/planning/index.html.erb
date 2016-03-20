@@ -1,5 +1,5 @@
 <div class='row collapse'>
-  <div class="small-6 columns nopadding">
+  <div class="small-12 large-6 columns nopadding">
     <%= form_tag(planning_path, method: "get") do %>
       <div class="small-6 columns">
 	<%= date_field_tag :date %>
@@ -11,7 +11,7 @@
   </div>
   
   <% if admin? %>
-    <div class="small-6 columns nopadding">
+    <div class="small-12 large-6 columns nopadding">
       <%= form_tag(jobs_path) do %>
 	<div class="small-5 columns">
 	  <%= text_field_tag :login, nil, placeholder: "login" %>
@@ -25,7 +25,7 @@
 	</div>
       <% end %>
     </div>
-    <div class="small-6 columns nopadding">
+    <div class="small-12 large-6 columns nopadding">
       <%= form_tag(tasks_path) do %>
 	<div class="small-5 columns">
 	  <%= text_field_tag :todo, nil, placeholder: "to do" %>
@@ -45,15 +45,15 @@
 <div class='row'>
   <div class="small-12 columns">
     <div class="small-12 columns">
-      <%= link_to "Prev", "#{planning_path}?date=#{@prev_date}", class: "button large-2 columns" %>
-      <%= link_to "Next", "#{planning_path}?date=#{@next_date}", class: "button large-2 columns right" %>
+      <%= link_to "Prev", "#{planning_path}?date=#{@prev_date}", class: "button large-2 small-6 columns" %>
+      <%= link_to "Next", "#{planning_path}?date=#{@next_date}", class: "button large-2 small-6 columns right" %>
     </div>
     <h3><%= @date %></h3>
     
     <%= link_to "Assigned", "#{planning_path}?date=#{@current_date}",
-    class: "button large-6 columns #{params[:view] == 'activities' ? '' : 'midnight'}" %>
+    class: "button small-6 columns #{params[:view] == 'activities' ? '' : 'midnight'}" %>
     <%= link_to "Activities", "#{planning_path}?date=#{@current_date}&view=activities",
-    class: "button large-6 columns #{params[:view] == 'activities' ? 'midnight' : ''}" %>
+    class: "button small-6 columns #{params[:view] == 'activities' ? 'midnight' : ''}" %>
 
     <% if params[:view] == "activities" %>
       <%= render 'layouts/activities' %>
