@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to the Astek planning</h1>
+    <p>
+      Youn can create your account by following this <%= link_to "link",
+						     "#{invitations_url}?invitation=#{@invitation.token}" %>.
+    </p>
+  </body>
+</html>

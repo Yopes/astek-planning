@@ -6,9 +6,13 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    invitation = Invitation.new
-    invitation.save
-    flash.now['success'] = "Invitation envoyé #{invitation.token}"
+    invitation = Invitation.new(mail: params[:mail])
+    if invitation.save
+      InvitationMailer.invitation_mailer(invitation).deliver_now
+      flash.now['success'] = "Invitation envoyé"
+    else
+      flash.now['alert'] = "Erreur lors de l'invitation"
+    end
     render 'new'
   end
 

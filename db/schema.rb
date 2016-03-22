@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318201325) do
+ActiveRecord::Schema.define(version: 20160322130720) do
 
   create_table "invitations", force: :cascade do |t|
     t.string   "token",      limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "mail",       limit: 255
   end
 
   create_table "jobs", force: :cascade do |t|

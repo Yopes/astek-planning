@@ -1,6 +1,10 @@
 class Invitation < ActiveRecord::Base
   before_save :generate_token
 
+  email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+  validates :mail, presence: true, format: { with: email_regex }
+
   def encrypt(string)
     secure_hash("chikdanslemuso-#{string}")
   end
