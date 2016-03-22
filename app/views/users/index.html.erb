@@ -5,15 +5,15 @@
       <thead>
 	<tr>
 	  <th>Login</th>
-	  <th>Firstname</th>
-	  <th>Lastname</th>
+	  <th class="hide-for-small-only">Firstname</th>
+	  <th class="hide-for-small-only">Lastname</th>
 	  <th>Phone</th>
 	  <th>Mail</th>
-	  <th>Promo</th>
-	  <th>Actif</th>
+	  <th class="hide-for-small-only">Promo</th>
+	  <th class="hide-for-small-only">Actif</th>
 	  <% if admin? %>
-	    <th width="100">Edit</th>
-	    <th width="100">Delete</th>
+	    <th width="100" class="hide-for-small-only">Edit</th>
+	    <th width="100" class="hide-for-small-only">Delete</th>
 	  <% end %>
 	</tr>
       </thead>
@@ -21,16 +21,16 @@
 	<% @users.each do |user| %>
 	  <tr>
 	    <td><%= user.login %></td>
-	    <td><%= user.firstname %></td>
-	    <td><%= user.lastname %></td>
+	    <td class="hide-for-small-only"><%= user.firstname %></td>
+	    <td class="hide-for-small-only"><%= user.lastname %></td>
 	    <td><%= user.tel %></td>
 	    <td><%= user.mail %></td>
-	    <td><%= user.promo %></td>
-	    <td><%= user.actif ? "Yes" : "No" %></td>
+	    <td class="hide-for-small-only"><%= user.promo %></td>
+	    <td class="hide-for-small-only"><%= user.actif ? "Yes" : "No" %></td>
 	    <% if admin? %>
-	      <td><%= link_to "Edit", "#{users_path}/#{user.id}/edit",
+	      <td class="hide-for-small-only"><%= link_to "Edit", "#{users_path}/#{user.id}/edit",
 		  class: "postfix button alert nomargin" %></td>
-	      <td><%= link_to "Delete", user == current_user ? "#" : "#{users_path}/#{user.id}/delete",
+	      <td class="hide-for-small-only"><%= link_to "Delete", user == current_user ? "#" : "#{users_path}/#{user.id}/delete",
 		  class: "postfix button nomargin #{user == current_user ? 'inactive' : 'alert'}" %></td>
 	    <% end %>
 	  </tr>

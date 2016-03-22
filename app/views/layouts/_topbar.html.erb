@@ -13,6 +13,9 @@
       <li><%= link_to "Month", "#{planning_path}/month" %></li>
       <li><%= link_to "Directory", directory_path %></li>
       <li><%= link_to "Edit profile", "#{users_path}/#{current_user.id}/edit" %></li>
+      <% if admin? %>
+        <li><%= link_to "Send invitation", invitations_path %></li>
+      <% end %>
       <li class="active"><%= link_to "Logout", logout_path %></li>
     </ul>
   </section>
@@ -35,6 +38,9 @@
 	  <li><%= link_to "Week",  "#{planning_path}/week" %></li>
 	  <li><%= link_to "Month", "#{planning_path}/month" %></li>
           <li><%= link_to "Edit profile", "#{users_path}/#{current_user.id}/edit" %></li>
+	  <% if admin? %>
+            <li><%= link_to "Send invitation", invitations_path %></li>
+	  <% end %>
           <li class="active"><%= link_to "Logout", logout_path %></li>
         </ul>
       </li>
