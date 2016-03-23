@@ -13,8 +13,34 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery-ui
 //= require foundation
 //= require turbolinks
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+$(function() {
+    $( "#userSearch" ).autocomplete({
+	source: function( request, response ) {
+	    $.ajax({
+		url: "search_users",
+		dataType: "jsonp",
+		data: {
+		    login: request.term
+		},
+		success: function( data ) {
+		    response( data );
+		}
+	    });
+	},
+	select: function( event, ui ) {
+	    $( "#userSearch" ).val(ui.item.value);
+	    return false;
+	},
+	focus: function( event, ui ) {
+	    $( "#userSearch" ).val(ui.item.value);
+	    return false;
+	}
+    });
+});

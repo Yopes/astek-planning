@@ -60,6 +60,14 @@ class UsersController < ApplicationController
     redirect_back
   end
 
+  def search_users
+    users = []
+    User.where("login LIKE '%#{params[:login]}%'").select('login').limit(100).each do |user|
+      users << user.login
+    end
+    render json: users, callback: params['callback']
+  end
+
   private
 
   def user_params

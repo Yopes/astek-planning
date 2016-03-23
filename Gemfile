@@ -30,6 +30,8 @@ gem 'foundation-rails', '~> 5.5'
 
 gem 'jquery-turbolinks'
 
+gem 'jquery-ui-rails'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
