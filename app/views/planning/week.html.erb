@@ -3,11 +3,17 @@
     <%= link_to "Prev week", "#{planning_path}/week?date=#{@prev_date}", class: "button large-3 small-6 columns" %>
     <%= link_to "Next week", "#{planning_path}/week?date=#{@next_date}", class: "button large-3 small-6 columns" %>
   </div>
-    
-  <div class="large-12 large-centered columns">
-    <% @days.each do |day| %>
-      <%= link_to day[:display_date], "#{planning_path}?date=#{day[:serialized_date]}",
-      class: "button large-12 columns #{day[:work] ? 'midnight' : ''} #{day[:full] ? '' : 'warning'}" %>
-    <% end %>
+  
+  <div class="row">
+    <div class="large-12 large-centered columns">
+      <ul class="dispweek calendar">
+	<li class="week">
+	  <% @days.each do |day| %>
+	    <%= link_to day[:display_date], "#{planning_path}?date=#{day[:serialized_date]}",
+	    class: "small-1 medium-1 large-1 day #{day[:work] ? 'work' : ''} #{day[:full] ? '' : 'warning'}" %> 
+	  <% end %>
+	</li>
+      </ul>
+    </div>
   </div>
 </div>
