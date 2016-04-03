@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322130720) do
+ActiveRecord::Schema.define(version: 20160402183123) do
 
   create_table "invitations", force: :cascade do |t|
     t.string   "token",      limit: 255
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20160322130720) do
   end
 
   create_table "jobs", force: :cascade do |t|
-    t.string   "date",       limit: 255
+    t.date     "date"
     t.string   "todo",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20160322130720) do
 
   create_table "tasks", force: :cascade do |t|
     t.string   "todo",       limit: 255
-    t.string   "date",       limit: 255
+    t.date     "date"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "need",       limit: 4

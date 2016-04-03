@@ -30,7 +30,7 @@ module PlanningHelper
   end
 
   def serialize_date(time)
-    "#{time.day}/#{time.month}/#{time.year}"
+    "#{time.year}/#{time.month < 10 ? '0' : ''}#{time.month}/#{time.day < 10 ? '0' : ''}#{time.day}"
   end
 
   def display_date(time)
@@ -42,16 +42,15 @@ module PlanningHelper
       begin
         if date.include?("/")
           tab = date.split('/')
-          time = "#{tab[2]}-#{tab[1]}-#{tab[0]} 00:00:00".to_time
         else
           tab = date.split('-')
-          time = "#{tab[0]}-#{tab[1]}-#{tab[2]} 00:00:00".to_time
         end
+        time = "#{tab[0]}-#{tab[1]}-#{tab[2]} 00:00:00".to_time
       rescue
-        time = Time.new
+        time = get_time(serialize_date(Time.new))
       end
     else
-      time = Time.new
+      time = get_time(serialize_date(Time.new))
     end
     return time
   end
@@ -71,7 +70,7 @@ module PlanningHelper
   end
 
   def is_full_day?(day)
-    tasks = Task.where("date = '#{serialize_date(day)}'").all
+    tasks = Task.where("date = '#{day}'").all
     tasks.each do |task|
       return false if task.need > task.count_assigned
     end
@@ -87,7 +86,7 @@ module PlanningHelper
       tmp[:day] = day.day
       tmp[:month] = day.month
       tmp[:full] = is_full_day?(day)
-      tmp[:work] = current_user.jobs.where("date = '#{serialize_date(day)}'").all.count > 0 ? true : false
+      tmp[:work] = current_user.jobs.where("date = '#{day}'").all.count > 0 ? true : false
       days << tmp
       day += 86400
     end

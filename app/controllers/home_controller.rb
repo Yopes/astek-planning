@@ -7,11 +7,11 @@ class HomeController < ApplicationController
     if !signed_in?
       redirect_to signin_path
     else
-      time = Time.new
-      next_job = current_user.jobs.where(["date >= ?", serialize_date(time)]).order(date: :asc).first
+      time = get_time
+      next_job = current_user.jobs.where(["date >= ?", time]).order(date: :asc).first
       if !next_job.nil?
-        @next_working_day = display_date(get_time(next_job.date))
-        @serialized_date = serialize_date(get_time(next_job.date))
+        @next_working_day = display_date(next_job.date)
+        @serialized_date = serialize_date(next_job.date)
       else
         @next_working_day = "No work planned"
       end

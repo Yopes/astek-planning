@@ -3,15 +3,17 @@ class PlanningController < ApplicationController
   before_action :redirect_not_admin, only: [:create_job, :update_job, :delete_job, :create_task, :update_task, :delete_task]
 
   include PlanningHelper
+  include CsvExtractorHelper
 
   def index
     time = get_time
+    p csv(time)
     @date = display_date(time)
     @prev_date = serialize_date(time - 86400)
     @next_date = serialize_date(time + 86400)
     @current_date = serialize_date(time)
-    @jobs = Job.where("date = '#{serialize_date(time)}'").all
-    @tasks = Task.where("date = '#{serialize_date(time)}'").all
+    @jobs = Job.where("date = '#{time}'").all
+    @tasks = Task.where("date = '#{time}'").all
   end
 
   def week
