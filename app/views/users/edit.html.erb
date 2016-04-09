@@ -43,6 +43,8 @@
 	      <%= f.check_box :admin %>
 	      <%= f.label :admin %>
 	    <% end %>
+	    <%= f.label :total_days %>
+	    <%= f.text_field :total_days, required: true %> <br />
 	  </div>
 	<% end %>
 	<%= hidden_field_tag :invitation, value: params[:invitation] %> <br />

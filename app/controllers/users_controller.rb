@@ -72,10 +72,12 @@ class UsersController < ApplicationController
 
   def user_params
     if !admin?
-      params[:user][:admin] = nil
-      params[:user][:actif] = nil
+      user = User.find(params[:id])
+      params[:user][:admin] = user.admin
+      params[:user][:actif] = user.actif
+      params[:user][:total_days] = user.total_days
     end
-    params.require(:user).permit(:login, :firstname, :lastname, :mail, :tel, :promo, :password, :admin, :actif)
+    params.require(:user).permit(:login, :firstname, :lastname, :mail, :tel, :promo, :password, :admin, :actif, :total_days)
   end
 
   def check_user_access(user)
