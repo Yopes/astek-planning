@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   get 'tasks/:id/delete' => 'planning#delete_task'
 
   get 'search_users' => 'users#search_users', defaults: { format: :json } 
+
+  get 'search_tasks' => 'planning#search_tasks', defaults: { format: :json } 
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

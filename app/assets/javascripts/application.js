@@ -44,3 +44,29 @@ $(function() {
 	}
     });
 });
+
+$(function() {
+    $( "#taskSearch" ).autocomplete({
+	source: function( request, response ) {
+	    $.ajax({
+		url: "search_tasks",
+		dataType: "jsonp",
+		data: {
+		    todo: request.term,
+		    date: date
+		},
+		success: function( data ) {
+		    response( data );
+		}
+	    });
+	},
+	select: function( event, ui ) {
+	    $( "#taskSearch" ).val(ui.item.value);
+	    return false;
+	},
+	focus: function( event, ui ) {
+	    $( "#taskSearch" ).val(ui.item.value);
+	    return false;
+	}
+    });
+});

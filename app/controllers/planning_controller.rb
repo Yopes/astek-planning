@@ -104,4 +104,13 @@ class PlanningController < ApplicationController
     redirect_back
   end
 
+  def search_tasks
+    tasks = []
+    Task.where("todo LIKE '%#{params[:todo]}%'").limit(100).each do |task|
+      tasks << task.todo if params[:date] == serialize_date(task.date)
+    end
+    render json: tasks, callback: params['callback']
+  end
+
+
 end
